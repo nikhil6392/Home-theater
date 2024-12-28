@@ -14,7 +14,7 @@ var ErrNotFound = errors.New("ratings not found for a record")
 
 type ratingRepository interface {
 	Get(ctx context.Context, recordID model.RecordID, recordType model.RecordType) ([]model.Rating, error) 
-	Put(ctx context.Context, recordID model.RecordID, recordType model.RecordType, rating *model.rating) error 
+	Put(ctx context.Context, recordID model.RecordID, recordType model.RecordType, rating *model.Rating) error 
 }
 
 // Controller defines a rating service controller.
@@ -36,11 +36,11 @@ func (c *Controller) GetAggregatedRating(ctx context.Context, recordID model.Rec
 	} else if err != nil {
 		return 0, err
 	}
-
 	sum := float64(0)
 	for _, r := range ratings {
-		sum += float64(r.value)
+		sum += float64(r.Value)
 	}
+
 	return sum / float64(len(ratings)), nil
 }
 

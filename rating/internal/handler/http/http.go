@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"strconv"
 
-	"movieexample.com/rating/internal/controller"
 	"movieexample.com/rating/internal/controller/rating"
 	"movieexample.com/rating/pkg/model"
 )
