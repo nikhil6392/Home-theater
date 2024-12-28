@@ -11,7 +11,7 @@ import (
 	"movieexample.com/rating/pkg/model"
 )
 
-// Handler defines a rating srvice controller.
+// Handler defines a rating service controller.
 type Handler struct {
 	ctrl *rating.Controller
 }
@@ -34,6 +34,8 @@ func (h *Handler) Handle(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+
+	// Using switch for serving requested methods
 	switch req.Method {
 	case http.MethodGet :
 		v, err := h.ctrl.GetAggregatedRating(req.Context(), recordID, recordType)
