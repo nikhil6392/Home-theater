@@ -8,7 +8,6 @@ import (
 	"movieexample.com/movie/internal/gateway"
 	"movieexample.com/movie/pkg/model"
 	ratingmodel "movieexample.com/rating/pkg/model"
-	"movieexample.con/movie/internal/gateway"
 )
 
 // ErrNotFound is returned when the movie metadata is not
@@ -42,7 +41,7 @@ func New(ratingGateway ratingGateway, metadataGateway metadataGateway) *Controll
 // Get returns the movie details including the aggregated
 // rating and movie metadata
 
-func (c*Controller) Get(ctx context.Context, id string) (*model.MovieDetails, error) {
+func (c *Controller) Get(ctx context.Context, id string) (*model.MovieDetails, error) {
 	metadata, err := c.metadataGateway.Get(ctx, id)
 	if err != nil && errors.Is(err, gateway.ErrNotFound) {
 		return nil, ErrNotFound
@@ -62,3 +61,4 @@ func (c*Controller) Get(ctx context.Context, id string) (*model.MovieDetails, er
 	}
 	return details, nil
 }
+
